@@ -122,22 +122,6 @@ jobs:
           region: "eu-west-2"
           destination: <<parameters.destination>>
           arch: <<parameters.arch>>
-      - deploy_destination_to_region:
-          region: "eu-central-1"
-          destination: <<parameters.destination>>
-          arch: <<parameters.arch>>
-      - deploy_destination_to_region:
-          region: "us-east-1"
-          destination: <<parameters.destination>>
-          arch: <<parameters.arch>>
-      - deploy_destination_to_region:
-          region: "us-west-2"
-          destination: <<parameters.destination>>
-          arch: <<parameters.arch>>
-      - deploy_destination_to_region:
-          region: "us-east-2"
-          destination: <<parameters.destination>>
-          arch: <<parameters.arch>>
 
 workflows:
   workflow:
@@ -163,26 +147,6 @@ workflows:
           requires:
             - release_loggly_x86_64
 
-      - build_x86_64:
-          destination: logzio
-          arch: x86_64
-          name: build_logzio_x86_64
-          requires:
-            - test
-      - release_logzio_x86_64:
-          type: approval
-          requires:
-            - build_logzio_x86_64
-          filters:
-            branches:
-              only:
-                - main
-      - deploy:
-          destination: logzio
-          arch: x86_64
-          requires:
-            - release_logzio_x86_64
-
       - build_arm64:
           destination: loggly
           arch: arm64
@@ -202,26 +166,6 @@ workflows:
           arch: arm64
           requires:
             - release_loggly_arm64
-              
-      - build_arm64:
-          destination: logzio
-          arch: arm64
-          name: build_logzio_arm64
-          requires:
-            - test
-      - release_logzio_arm64:
-          type: approval
-          requires:
-            - build_logzio_arm64
-          filters:
-            branches:
-              only:
-                - main
-      - deploy:
-          destination: logzio
-          arch: arm64
-          requires:
-            - release_logzio_arm64
 
       - build_x86_64:
           destination: firehose
