@@ -1,5 +1,5 @@
 # Example:
-[![CircleCI](https://circleci.com/gh/klaatu01/woodchuck.svg?style=svg)](https://circleci.com/gh/klaatu01/woodchuck)
+[![CircleCI](https://circleci.com/gh/totallymoney/woodchuck.svg?style=svg)](https://circleci.com/gh/totallymoney/woodchuck)
 
 # Woodchuck
 
